@@ -40,10 +40,13 @@ class _SignInScreenState extends State<SignInScreen> {
           children: <Widget>[
             Column(
               children: <Widget>[
-                Icon(
-                  Icons.person,
-                  color: Colors.teal[900],
-                  size: 100,
+                Container(
+                  width: 100,
+                  height: 100,
+                  child: Image.asset(
+                    'assets/images/splashGreen.png', // Caminho para a imagem
+                    fit: BoxFit.cover, // Ajuste da imagem
+                  ),
                 ),
                 Text(
                   'Faça o login',
