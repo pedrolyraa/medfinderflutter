@@ -21,7 +21,23 @@ class MedicamentosScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              // Adicione aqui a lista de medicamentos ou qualquer outro conteúdo relacionado aos medicamentos
+              ElevatedButton(
+                onPressed: () {
+                  // Adicione a ação desejada ao pressionar o botão
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal[900], // Cor de fundo do botão
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30), // Borda arredondada
+                  ),
+                ),
+                child: Text(
+                  'Adicionar Medicamento',
+                  style: TextStyle(
+                    color: Colors.white, // Cor do texto
+                  ),
+                ),
+              ),
             ],
           ),
         ),
