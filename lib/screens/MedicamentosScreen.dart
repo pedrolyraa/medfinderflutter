@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'FarmaciasProxScreen.dart'; // Importe a tela FarmaciasProxScreen
+import 'FarmaciasProxScreen.dart';
+import 'CadastroMedicamento.dart';
 
 class MedicamentosScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: null, // Remova a AppBar da aba "Medicamentos"
       body: Column(
         children: <Widget>[
           Container(
@@ -45,10 +45,13 @@ class MedicamentosScreen extends StatelessWidget {
                     SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
-                        // Adicione a ação desejada para cadastrar um medicamento
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => CadastroMedicamento()),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.teal[900],
+                        backgroundColor: Colors.teal[900], // Cor de fundo
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
@@ -66,7 +69,7 @@ class MedicamentosScreen extends StatelessWidget {
                         // Adicione a ação desejada para ver os medicamentos
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.teal[900],
+                        backgroundColor: Colors.teal[900], // Cor de fundo
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
@@ -81,14 +84,13 @@ class MedicamentosScreen extends StatelessWidget {
                     SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
-                        // Adicione a navegação para a tela FarmaciasProxScreen
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => FarmaciasProxScreen()),
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.teal[900],
+                        backgroundColor: Colors.teal[900], // Cor de fundo
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
