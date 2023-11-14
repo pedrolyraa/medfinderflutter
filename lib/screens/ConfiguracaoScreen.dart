@@ -15,7 +15,7 @@ class ConfiguracaoScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                'Configurações',
+                'Configursações',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,

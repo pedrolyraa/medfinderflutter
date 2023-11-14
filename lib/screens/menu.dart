@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'HistoricoScreen.dart';
+import 'ConfiguracaoScreen.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({Key? key});
@@ -144,24 +145,6 @@ class MedicamentosScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ConfiguracaoScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.teal[100],
-      child: Center(
-        child: Text(
-          'Página de Configuração',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
       ),
     );
   }
