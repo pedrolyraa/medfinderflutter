@@ -55,10 +55,6 @@ class _InitScreenState extends State<InitScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Cadastro'),
-        backgroundColor: Colors.teal,
-      ),
       body: Column(
         children: <Widget>[
           Expanded(
@@ -66,78 +62,109 @@ class _InitScreenState extends State<InitScreen> {
               color: Colors.teal[800],
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Container(
-                    height: displayHeight() / 3,
+                    height: displayHeight() / 4,
                     decoration: BoxDecoration(
                       color: Colors.teal[700],
                       borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(80),
-                        bottomRight: Radius.circular(80),
+                        bottomLeft: Radius.circular(60),
+                        bottomRight: Radius.circular(60),
                       ),
                     ),
-                    child: Icon(
-                      Icons.person,
-                      color: Colors.white,
-                      size: 70,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: TextField(
-                      controller: nameController,
-                      decoration: InputDecoration(
-                        labelText: 'Nome',
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabledBorder: outlineInputBorder(),
-                        focusedBorder: outlineInputBorder(),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: TextField(
-                      controller: phoneNumberController,
-                      inputFormatters: [phoneNumberFormatter],
-                      keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
-                        labelText: 'Número de Telefone',
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabledBorder: outlineInputBorder(),
-                        focusedBorder: outlineInputBorder(),
-                      ),
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          width: 160, // Largura da imagem
+                          height: 160, // Altura da imagem
+                          child: Image.asset(
+                            'assets/images/splash.png', // Caminho para a imagem
+                            fit: BoxFit.cover, // Ajuste da imagem
+                          ),
+                        ),
+                        Text(
+                          'Faça um pequeno cadastro!',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: TextField(
-                      controller: responsibleNumberController,
-                      inputFormatters: [responsibleNumberFormatter],
-                      keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
-                        labelText: 'Número do Responsável',
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabledBorder: outlineInputBorder(),
-                        focusedBorder: outlineInputBorder(),
-                      ),
+                    child: Column(
+                      children: <Widget>[
+                        TextField(
+                          controller: nameController,
+                          decoration: InputDecoration(
+                            labelText: 'Nome',
+                            filled: true,
+                            fillColor: Colors.white,
+                            enabledBorder: outlineInputBorder(),
+                            focusedBorder: outlineInputBorder(),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: TextField(
-                      controller: cpfController,
-                      inputFormatters: [cpfFormatter],
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: 'CPF',
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabledBorder: outlineInputBorder(),
-                        focusedBorder: outlineInputBorder(),
-                      ),
+                    child: Column(
+                      children: <Widget>[
+                        TextField(
+                          controller: phoneNumberController,
+                          inputFormatters: [phoneNumberFormatter],
+                          keyboardType: TextInputType.phone,
+                          decoration: InputDecoration(
+                            labelText: 'Número de Telefone',
+                            filled: true,
+                            fillColor: Colors.white,
+                            enabledBorder: outlineInputBorder(),
+                            focusedBorder: outlineInputBorder(),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: <Widget>[
+                        TextField(
+                          controller: responsibleNumberController,
+                          inputFormatters: [responsibleNumberFormatter],
+                          keyboardType: TextInputType.phone,
+                          decoration: InputDecoration(
+                            labelText: 'Número do Responsável',
+                            filled: true,
+                            fillColor: Colors.white,
+                            enabledBorder: outlineInputBorder(),
+                            focusedBorder: outlineInputBorder(),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: <Widget>[
+                        TextField(
+                          controller: cpfController,
+                          inputFormatters: [cpfFormatter],
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            labelText: 'CPF',
+                            filled: true,
+                            fillColor: Colors.white,
+                            enabledBorder: outlineInputBorder(),
+                            focusedBorder: outlineInputBorder(),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   ElevatedButton(
@@ -149,11 +176,13 @@ class _InitScreenState extends State<InitScreen> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
+                      minimumSize: Size(200, 50), // Aumenta o tamanho do botão
                     ),
                     child: Text(
                       'Cadastrar',
                       style: TextStyle(
                         color: Colors.white,
+                        fontSize: 18, // Aumenta o tamanho da fonte do texto
                       ),
                     ),
                   ),

@@ -3,8 +3,14 @@ import 'HistoricoScreen.dart';
 import 'ConfiguracaoScreen.dart';
 import 'MedicamentosScreen.dart';
 
+void main() {
+  runApp(MaterialApp(
+    home: MenuScreen(),
+  ));
+}
+
 class MenuScreen extends StatefulWidget {
-  const MenuScreen({Key? key});
+  const MenuScreen({Key? key}) : super(key: key);
 
   @override
   State<MenuScreen> createState() => _MenuScreenState();
@@ -33,20 +39,19 @@ class _MenuScreenState extends State<MenuScreen> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.add),
-            label: 'Medicamentos',
+            label: '', // Rótulo vazio
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.history),
-            label: 'Histórico',
+            label: '', // Rótulo vazio
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Configuração',
+            label: '', // Rótulo vazio
           ),
         ],
+        selectedItemColor: Colors.teal, // Cor dos ícones quando a página está ativa
       ),
-      extendBody: true,
     );
   }
 }
-
