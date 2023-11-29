@@ -16,139 +16,147 @@ class CadastroMedicamento extends StatefulWidget {
 
 class _CadastroMedicamentoState extends State<CadastroMedicamento> {
   TextEditingController _searchController = TextEditingController();
-  List<String> searchResults = [];
-  List<String> medicamentosCadastrados = ['Paracetamol', 'Analgésico', 'Pílula do dia seguinte'];
+  TextEditingController _quantityController = TextEditingController();
+  TextEditingController _dailyUseController = TextEditingController();
+  TextEditingController _totalQuantityController = TextEditingController();
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Container(
-            height: 30, // Altura da barra superior (30 pixels)
-            color: Colors.teal[800], // Cor da barra superior
-          ),
-          Container(
-            color: Colors.teal[800],
-            alignment: Alignment.center,
-            child: Column(
-              children: <Widget>[
-                Image.asset('assets/images/splash.png', width: 100, height: 100),
-                Text(
-                  'Digite o nome do medicamento que deseja cadastrar',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: CustomScrollView(
-              slivers: <Widget>[
-                SliverList(
-                  delegate: SliverChildListDelegate(
-                    <Widget>[
-                      Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: TextField(
-                          controller: _searchController,
-                          decoration: InputDecoration(
-                            labelText: 'Pesquisar Medicamento',
-                            prefixIcon: Icon(Icons.search),
-                          ),
-                          onChanged: (value) {
-                            // Simulando a pesquisa com resultados fictícios
-                            setState(() {
-                              searchResults = _performSearch(value);
-                            });
-                          },
-                        ),
-                      ),
-                      ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: searchResults.length,
-                        itemBuilder: (context, index) {
-                          return ElevatedButton(
-                            onPressed: () {
-                              // Navegar para a próxima página com o resultado selecionado
-                              _navigateToMedicamentoDetails(context, searchResults[index]);
-                            },
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(Colors.teal), // Cor do fundo verde-água
-                              foregroundColor: MaterialStateProperty.all(Colors.white), // Cor do texto branco
-                              shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0), // Borda arredondada
-                              )),
-                            ),
-                            child: Text(searchResults[index]),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  List<String> _performSearch(String query) {
-    // Simulando uma pesquisa fictícia. Substitua isso pela lógica de pesquisa real.
-    List<String> results = [];
-    for (String medicamento in medicamentosCadastrados) {
-      if (medicamento.toLowerCase().contains(query.toLowerCase())) {
-        results.add(medicamento);
-      }
-    }
-    return results;
-  }
-
-  void _navigateToMedicamentoDetails(BuildContext context, String medicamento) {
-    // Navegar para a próxima página e passar o nome do medicamento
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MedicamentoDetailsScreen(medicamento: medicamento),
-      ),
-    );
-  }
-}
-
-class MedicamentoDetailsScreen extends StatelessWidget {
-  final String medicamento;
-
-  MedicamentoDetailsScreen({required this.medicamento});
+  String selectedMedicamento = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Detalhes do Medicamento'),
-        backgroundColor: Colors.teal, // Cor de fundo da AppBar
+        title: Text('Cadastro de Medicamento'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Detalhes do medicamento: $medicamento'),
-            SizedBox(height: 20), // Espaçamento entre o texto e o botão de voltar
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context); // Ação de voltar para a página anterior
-              },
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.teal), // Cor do fundo verde-água
-                foregroundColor: MaterialStateProperty.all(Colors.white), // Cor do texto branco
-              ),
-              child: Text('Voltar'),
+      body: Column(
+        children: <Widget>[
+          // Parte superior da tela com a lupa e campo de busca
+          Container(
+            padding: EdgeInsets.all(16.0),
+            color: Color(0xFF00695C), // Cor de fundo
+            child: Row(
+              children: [
+                // Ícone de lupa
+                Icon(
+                  Icons.search,
+                  color: Colors.white,
+                ),
+                SizedBox(width: 16.0),
+                // Campo de busca
+                Expanded(
+                  child: TextField(
+                    controller: _searchController,
+                    style: TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      hintText: 'Digite o nome do medicamento',
+                      hintStyle: TextStyle(color: Colors.white70),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+
+          // Parte inferior da tela com os campos de entrada
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.all(16.0),
+              color: Color(0xFF00695C), // Cor de fundo
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  // Resultado da busca
+                  if (selectedMedicamento.isNotEmpty)
+                    Text(
+                      'Medicamento Selecionado: $selectedMedicamento',
+                      style: TextStyle(fontSize: 18.0, color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
+
+                  SizedBox(height: 20.0),
+
+                  // Campos de entrada que ocupam a tela inteira
+                  TextField(
+                    controller: _quantityController,
+                    keyboardType: TextInputType.number,
+                    style: TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      labelText: 'Quantidade (mL/gramas)',
+                      labelStyle: TextStyle(color: Colors.white),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: 16.0),
+
+                  TextField(
+                    controller: _dailyUseController,
+                    keyboardType: TextInputType.number,
+                    style: TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      labelText: 'Quantidade diária',
+                      labelStyle: TextStyle(color: Colors.white),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: 16.0),
+
+                  TextField(
+                    controller: _totalQuantityController,
+                    keyboardType: TextInputType.number,
+                    style: TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      labelText: 'Quantidade total na caixa',
+                      labelStyle: TextStyle(color: Colors.white),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: 20.0),
+
+                  ElevatedButton(
+                    onPressed: () {
+                      // Implemente a lógica para salvar as informações
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white, // Cor de fundo do botão
+                      onPrimary: Colors.teal, // Cor do texto do botão
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        'Salvar Informações',
+                        style: TextStyle(
+                          color: Colors.teal,
+                          fontSize: 16.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
