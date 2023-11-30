@@ -1,7 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:provider/provider.dart';
+import '../apis/AuthController.dart';
+import 'initScreen.dart';
 import 'menu.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  final pageController = PageController(initialPage: 1);
+
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => AuthController(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'MedFinder',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: AuthWrapper(pageController),
+      ),
+    );
+  }
+}
+
+class AuthWrapper extends StatelessWidget {
+  final PageController pageController;
+
+  AuthWrapper(this.pageController);
+
+  @override
+  Widget build(BuildContext context) {
+    final authController = Provider.of<AuthController>(context);
+
+    return PageView(
+      controller: pageController,
+      children: <Widget>[
+        Scaffold(
+          body: SignInScreen(),
+        ),
+        Scaffold(
+          body: authController.token != null ? MenuScreen() : InitScreen(pageController),
+        ),
+      ],
+    );
+  }
+}
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key});
@@ -90,13 +140,32 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                // Simule uma autenticação bem-sucedida
-                final isAuthenticated = true; // Altere para true se a autenticação for bem-sucedida
-                if (isAuthenticated) {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                    return MenuScreen();
-                  }));
+              onPressed: () async {
+                final authController = Provider.of<AuthController>(context, listen: false);
+                final login = cpfController.text;
+                final senha = phoneNumberController.text;
+
+                // Validar entrada
+                if (login.isEmpty || senha.isEmpty) {
+                  // Exibir mensagem de erro ou feedback ao usuário
+                  print('Por favor, preencha todos os campos.');
+                  return;
+                }
+
+                try {
+                  await authController.login(login, senha);
+
+                  if (authController.token != null) {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                      return MenuScreen();
+                    }));
+                  } else {
+                    // Trate o erro de autenticação aqui
+                    print('Erro de autenticação');
+                  }
+                } catch (e) {
+                  // Tratamento de erro mais genérico, por exemplo, exibir uma mensagem de erro ao usuário
+                  print('Erro durante o login: $e');
                 }
               },
               style: ElevatedButton.styleFrom(

@@ -18,6 +18,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   url_launcher: ^6.0.10
   http: ^1.1.0
+  provider: 6.1.1
+  mask_text_input_formatter: ^2.5.0
 
 
 
