@@ -1,11 +1,15 @@
 import 'dart:convert';
+import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  // static const String baseUrl = "http://192.168.0.193/auth";
-  static const String baseUrl = "http://10.0.2.2:8080/auth"; // Substitua pelo seu URL base
+  // static const String baseUrl = "http://192.168.0.193:8080/auth";
+  static const String baseUrl = "http://10.0.2.2:8080/auth"; // Substitua pelo seu URL base 192.168.0.193
+  final Dio _dio = Dio();
 
-
+  ApiService() {
+    _dio.options.baseUrl = baseUrl;
+  }
 
   Future<String?> login(String login, String password) async {
     try {
