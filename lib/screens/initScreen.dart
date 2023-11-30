@@ -100,7 +100,7 @@ class _InitScreenState extends State<InitScreen> {
                         TextField(
                           controller: nameController,
                           decoration: InputDecoration(
-                            labelText: 'Nome',
+                            labelText: 'Login',
                             filled: true,
                             fillColor: Colors.white,
                             enabledBorder: outlineInputBorder(),
@@ -119,7 +119,7 @@ class _InitScreenState extends State<InitScreen> {
                           inputFormatters: [phoneNumberFormatter],
                           keyboardType: TextInputType.phone,
                           decoration: InputDecoration(
-                            labelText: 'Número de Telefone',
+                            labelText: 'Senha',
                             filled: true,
                             fillColor: Colors.white,
                             enabledBorder: outlineInputBorder(),
@@ -129,25 +129,25 @@ class _InitScreenState extends State<InitScreen> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      children: <Widget>[
-                        TextField(
-                          controller: responsibleNumberController,
-                          inputFormatters: [responsibleNumberFormatter],
-                          keyboardType: TextInputType.phone,
-                          decoration: InputDecoration(
-                            labelText: 'Número do Responsável',
-                            filled: true,
-                            fillColor: Colors.white,
-                            enabledBorder: outlineInputBorder(),
-                            focusedBorder: outlineInputBorder(),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(16.0),
+                  //   child: Column(
+                  //     children: <Widget>[
+                  //       TextField(
+                  //         controller: responsibleNumberController,
+                  //         inputFormatters: [responsibleNumberFormatter],
+                  //         keyboardType: TextInputType.phone,
+                  //         decoration: InputDecoration(
+                  //           labelText: 'Número do Responsável',
+                  //           filled: true,
+                  //           fillColor: Colors.white,
+                  //           enabledBorder: outlineInputBorder(),
+                  //           focusedBorder: outlineInputBorder(),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
@@ -157,7 +157,7 @@ class _InitScreenState extends State<InitScreen> {
                           inputFormatters: [cpfFormatter],
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
-                            labelText: 'CPF',
+                            labelText: 'Role',
                             filled: true,
                             fillColor: Colors.white,
                             enabledBorder: outlineInputBorder(),
