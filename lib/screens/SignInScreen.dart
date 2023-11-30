@@ -147,8 +147,12 @@ class _SignInScreenState extends State<SignInScreen> {
 
                 // Validar entrada
                 if (login.isEmpty || senha.isEmpty) {
-                  // Exibir mensagem de erro ou feedback ao usuário
-                  print('Por favor, preencha todos os campos.');
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Por favor, preencha todos os campos.'),
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
                   return;
                 }
 
@@ -160,12 +164,20 @@ class _SignInScreenState extends State<SignInScreen> {
                       return MenuScreen();
                     }));
                   } else {
-                    // Trate o erro de autenticação aqui
-                    print('Erro de autenticação');
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Erro de autenticação'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
                   }
                 } catch (e) {
-                  // Tratamento de erro mais genérico, por exemplo, exibir uma mensagem de erro ao usuário
-                  print('Erro durante o login: $e');
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Erro durante o login: $e'),
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
                 }
               },
               style: ElevatedButton.styleFrom(
