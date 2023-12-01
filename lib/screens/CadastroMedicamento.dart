@@ -118,11 +118,7 @@ class _CadastroMedicamentoState extends State<CadastroMedicamento> {
                   ElevatedButton(
                     onPressed: () {
                       // Implemente a lógica para salvar as informações
-                      // Navegar para a home_page.dart
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                      );
+                      // Remova a navegação para a home_page.dart
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white,
@@ -147,21 +143,6 @@ class _CadastroMedicamentoState extends State<CadastroMedicamento> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-// home_page.dart
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Page'),
-      ),
-      body: Center(
-        child: Text('Welcome to the Home Page!'),
       ),
     );
   }
