@@ -6,7 +6,6 @@ import 'initScreen.dart';
 import 'menu.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-
 void main() {
   runApp(MyApp());
 }
@@ -190,6 +189,20 @@ class _SignInScreenState extends State<SignInScreen> {
                 'Entrar',
                 style: TextStyle(
                   color: Colors.white,
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                  return MenuScreen();
+                }));
+              },
+              child: Text(
+                'Ir para o Menu',
+                style: TextStyle(
+                  color: Colors.teal[900],
                 ),
               ),
             ),
