@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "919404621548",
+    "project_id": "medfinderflutter",
+    "storage_bucket": "medfinderflutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919404621548:android:2119d9ff550e643ac73fc9",
+        "android_client_info": {
+          "package_name": "com.medfinder.medfinderflutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWNz3kWvsWMUzcV2zpq96qsuz5EYjBY2I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

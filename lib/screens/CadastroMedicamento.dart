@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
     home: CadastroMedicamento(),
     theme: ThemeData(
-      primaryColor: Colors.teal, // Cor principal verde-água
+      primaryColor: Colors.teal,
     ),
   ));
 }
@@ -31,19 +30,16 @@ class _CadastroMedicamentoState extends State<CadastroMedicamento> {
       ),
       body: Column(
         children: <Widget>[
-          // Parte superior da tela com a lupa e campo de busca
           Container(
             padding: EdgeInsets.all(16.0),
-            color: Color(0xFF00695C), // Cor de fundo
+            color: Color(0xFF00695C),
             child: Row(
               children: [
-                // Ícone de lupa
                 Icon(
                   Icons.search,
                   color: Colors.white,
                 ),
                 SizedBox(width: 16.0),
-                // Campo de busca
                 Expanded(
                   child: TextField(
                     controller: _searchController,
@@ -57,26 +53,20 @@ class _CadastroMedicamentoState extends State<CadastroMedicamento> {
               ],
             ),
           ),
-
-          // Parte inferior da tela com os campos de entrada
           Expanded(
             child: Container(
               padding: const EdgeInsets.all(16.0),
-              color: Color(0xFF00695C), // Cor de fundo
+              color: Color(0xFF00695C),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  // Resultado da busca
                   if (selectedMedicamento.isNotEmpty)
                     Text(
                       'Medicamento Selecionado: $selectedMedicamento',
                       style: TextStyle(fontSize: 18.0, color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
-
                   SizedBox(height: 20.0),
-
-                  // Campos de entrada que ocupam a tela inteira
                   TextField(
                     controller: _quantityController,
                     keyboardType: TextInputType.number,
@@ -92,9 +82,7 @@ class _CadastroMedicamentoState extends State<CadastroMedicamento> {
                       ),
                     ),
                   ),
-
                   SizedBox(height: 16.0),
-
                   TextField(
                     controller: _dailyUseController,
                     keyboardType: TextInputType.number,
@@ -110,9 +98,7 @@ class _CadastroMedicamentoState extends State<CadastroMedicamento> {
                       ),
                     ),
                   ),
-
                   SizedBox(height: 16.0),
-
                   TextField(
                     controller: _totalQuantityController,
                     keyboardType: TextInputType.number,
@@ -128,16 +114,19 @@ class _CadastroMedicamentoState extends State<CadastroMedicamento> {
                       ),
                     ),
                   ),
-
                   SizedBox(height: 20.0),
-
                   ElevatedButton(
                     onPressed: () {
                       // Implemente a lógica para salvar as informações
+                      // Navegar para a home_page.dart
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.white, // Cor de fundo do botão
-                      onPrimary: Colors.teal, // Cor do texto do botão
+                      primary: Colors.white,
+                      onPrimary: Colors.teal,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
                       ),
@@ -158,6 +147,21 @@ class _CadastroMedicamentoState extends State<CadastroMedicamento> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// home_page.dart
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Page'),
+      ),
+      body: Center(
+        child: Text('Welcome to the Home Page!'),
       ),
     );
   }
