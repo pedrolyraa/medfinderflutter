@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medfinderflutter/firebase_api.dart';
 import 'package:medfinderflutter/screens/SignInScreen.dart';
 import 'package:medfinderflutter/screens/initScreen.dart';
-import 'package:medfinderflutter/screens/HistoricoScreen.dart'; // Adicione a importação de HistoricoScreen
+import 'package:medfinderflutter/screens/AceiteScreen.dart'; // Adicione a importação de HistoricoScreen
 import 'package:provider/provider.dart';
 import 'apis/AuthController.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -28,8 +28,8 @@ void main() async {
 
   FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
     // Navegar para o HistoricoScreen quando o app é aberto a partir de uma notificação
-    print('Message clicked! Navigating to HistoricoScreen.');
-    navigatorKey.currentState?.push(MaterialPageRoute(builder: (_) => HistoricoScreen()));
+    print('Mensagem Aceita!.');
+    navigatorKey.currentState?.push(MaterialPageRoute(builder: (_) => AceiteScreen()));
   });
 
   runApp(MyApp());
