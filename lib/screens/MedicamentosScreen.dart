@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'FarmaciasProxScreen.dart';
 import 'CadastroMedicamento.dart';
+import 'EscolherHorarioScreen.dart';
 
 class MedicamentosScreen extends StatelessWidget {
   @override
@@ -66,7 +67,11 @@ class MedicamentosScreen extends StatelessWidget {
                     SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
-                        // Adicione a ação desejada para ver os medicamentos
+                        // Alteração aqui: navegar para a tela de escolha de horário
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => EscolherHorarioScreen()),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.teal[900], // Cor de fundo
@@ -75,7 +80,7 @@ class MedicamentosScreen extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        'Meus Medicamentos',
+                        'Escolher Horário',
                         style: TextStyle(
                           color: Colors.white,
                         ),
