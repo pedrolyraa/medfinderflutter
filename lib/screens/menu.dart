@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medfinderflutter/screens/MedicationSearchScreen.dart';
 import 'package:provider/provider.dart';
 import '../apis/AuthController.dart';
 import 'ConfiguracaoScreen.dart';

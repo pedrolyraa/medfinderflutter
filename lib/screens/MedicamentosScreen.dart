@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medfinderflutter/screens/MedicationSearchScreen.dart';
 import 'FarmaciasProxScreen.dart';
 import 'CadastroMedicamento.dart';
 
@@ -40,6 +41,27 @@ class MedicamentosScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const MedicationSearchScreen()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.teal[900], // Cor de fundo
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      child: Text(
+                        'Pesquisar Medicamento',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                     SizedBox(height: 20),
@@ -104,18 +126,6 @@ class MedicamentosScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
-            ),
-          ),
-          Container(
-            height: 50, // Altura da barra inferior
-            color: Colors.teal[800], // Cor da barra inferior
-            alignment: Alignment.center,
-            child: Text(
-              'Olá, bem-vindo ao MedFinder',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
               ),
             ),
           ),

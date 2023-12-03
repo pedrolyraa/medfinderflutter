@@ -153,7 +153,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       duration: Duration(seconds: 2),
                     ),
                   );
-                  return;
+                  return ;
                 }
 
                 try {
@@ -161,7 +161,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
                   if (authController.token != null) {
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                      return MenuScreen();
+                      return const MenuScreen();
                     }));
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
