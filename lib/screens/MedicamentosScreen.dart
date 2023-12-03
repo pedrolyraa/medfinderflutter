@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medfinderflutter/screens/MedicationSearchScreen.dart';
+import 'package:medfinderflutter/screens/MeusMedicamentos.dart';
 import 'FarmaciasProxScreen.dart';
 import 'CadastroMedicamento.dart';
 
@@ -88,7 +89,10 @@ class MedicamentosScreen extends StatelessWidget {
                     SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
-                        // Adicione a ação desejada para ver os medicamentos
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MeusMedicamentosScreen()),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.teal[900], // Cor de fundo

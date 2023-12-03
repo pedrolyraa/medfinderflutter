@@ -91,169 +91,171 @@ class _CadastroMedicamentoState extends State<CadastroMedicamento> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Container(
-            height: 30,
-            color: Colors.teal[800],
-          ),
-          Container(
-            color: Colors.teal[800],
-            alignment: Alignment.center,
-            child: Column(
-              children: <Widget>[
-                Image.asset('assets/images/splash.png', width: 100, height: 100),
-                Text(
-                  'Digite o nome do medicamento que deseja cadastrar',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                  ),
-                ),
-              ],
+      body: SingleChildScrollView (
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: 30,
+              color: Colors.teal[800],
             ),
-          ),
-
-          // Exiba as informações do medicamento se estiver disponível
-          if (selectedMedicamento.isNotEmpty)
-            Padding(
-              padding: EdgeInsets.all(16.0),
+            Container(
+              color: Colors.teal[800],
+              alignment: Alignment.center,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: <Widget>[
+                  Image.asset('assets/images/splash.png', width: 100, height: 100),
                   Text(
-                    'Informações do Medicamento:',
+                    'Digite o nome do medicamento que deseja cadastrar',
                     style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    selectedMedicamento,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
+                      color: Colors.white,
+                      fontSize: 17,
                     ),
                   ),
                 ],
               ),
             ),
-          Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              'Cadastro de Medicamento:',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+
+            // Exiba as informações do medicamento se estiver disponível
+            if (selectedMedicamento.isNotEmpty)
+              Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Informações do Medicamento:',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      selectedMedicamento,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                'Cadastro de Medicamento:',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          ),
-          TextField(
-            controller: _nameMedController,
-            keyboardType: TextInputType.number,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              labelText: 'Digite o nome do Medicamento',
-              labelStyle: TextStyle(color: Colors.black),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
-              ),
-            ),
-          ),
-          SizedBox(height: 20.0),
-          TextField(
-            controller: _quantityController,
-            keyboardType: TextInputType.number,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              labelText: 'Quantidade (mL/gramas)',
-              labelStyle: TextStyle(color: Colors.black),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
+            TextField(
+              controller: _nameMedController,
+              keyboardType: TextInputType.number,
+              style: TextStyle(color: Colors.black),
+              decoration: InputDecoration(
+                labelText: 'Digite o nome do Medicamento',
+                labelStyle: TextStyle(color: Colors.black),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 20.0),
-          TextField(
-            controller: _dailyUseController,
-            keyboardType: TextInputType.number,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              labelText: 'Quantidade diária',
-              labelStyle: TextStyle(color: Colors.black),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
-              ),
-            ),
-          ),
-          SizedBox(height: 20.0),
-          TextField(
-            controller: _totalQuantityController,
-            keyboardType: TextInputType.number,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              labelText: 'Quantidade total na caixa',
-              labelStyle: TextStyle(color: Colors.black),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
+            SizedBox(height: 20.0),
+            TextField(
+              controller: _quantityController,
+              keyboardType: TextInputType.number,
+              style: TextStyle(color: Colors.black),
+              decoration: InputDecoration(
+                labelText: 'Quantidade (mL/gramas)',
+                labelStyle: TextStyle(color: Colors.black),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 20.0),
-          TextField(
-            controller: _descriptionController,
-            keyboardType: TextInputType.text,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              labelText: 'Descrição do Remédio',
-              labelStyle: TextStyle(color: Colors.black),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
-              ),
-            ),
-          ),
-          SizedBox(height: 20.0),
-          TextField(
-            controller: _typeMedController,
-            keyboardType: TextInputType.text,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              labelText: 'Comprimido ou Ml',
-              labelStyle: TextStyle(color: Colors.black),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
+            SizedBox(height: 20.0),
+            TextField(
+              controller: _dailyUseController,
+              keyboardType: TextInputType.number,
+              style: TextStyle(color: Colors.black),
+              decoration: InputDecoration(
+                labelText: 'Quantidade diária',
+                labelStyle: TextStyle(color: Colors.black),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
               ),
             ),
-          ),
-          ElevatedButton(
-            onPressed: _cadastrarMedicamento,
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.teal),
-              foregroundColor: MaterialStateProperty.all(Colors.white),
+            SizedBox(height: 20.0),
+            TextField(
+              controller: _totalQuantityController,
+              keyboardType: TextInputType.number,
+              style: TextStyle(color: Colors.black),
+              decoration: InputDecoration(
+                labelText: 'Quantidade total na caixa',
+                labelStyle: TextStyle(color: Colors.black),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+              ),
             ),
-            child: Text('Cadastrar Medicamento'),
-          ),
-        ],
+            SizedBox(height: 20.0),
+            TextField(
+              controller: _descriptionController,
+              keyboardType: TextInputType.text,
+              style: TextStyle(color: Colors.black),
+              decoration: InputDecoration(
+                labelText: 'Descrição do Remédio',
+                labelStyle: TextStyle(color: Colors.black),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+              ),
+            ),
+            SizedBox(height: 20.0),
+            TextField(
+              controller: _typeMedController,
+              keyboardType: TextInputType.text,
+              style: TextStyle(color: Colors.black),
+              decoration: InputDecoration(
+                labelText: 'Comprimido ou Ml',
+                labelStyle: TextStyle(color: Colors.black),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: _cadastrarMedicamento,
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.teal),
+                foregroundColor: MaterialStateProperty.all(Colors.white),
+              ),
+              child: Text('Cadastrar Medicamento'),
+            ),
+          ],
+        ),
       ),
     );
   }

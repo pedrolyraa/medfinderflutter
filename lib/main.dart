@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:medfinderflutter/custom_firebase_messaging.dart';
-import 'package:medfinderflutter/firebase_options.dart';
+// import 'package:medfinderflutter/firebase_options.dart';
 import 'package:medfinderflutter/screens/SignInScreen.dart';
 import 'package:medfinderflutter/screens/initScreen.dart';
 import 'package:provider/provider.dart';
 import 'apis/AuthController.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-    await Firebase.initializeApp();
-    await CustomFirebaseMessaging().Inicialize();
-    await CustomFirebaseMessaging().getTokenFirebase();
+    // await Firebase.initializeApp();
+    // await CustomFirebaseMessaging().Inicialize();
+    // await CustomFirebaseMessaging().getTokenFirebase();
 
 
   runApp(MyApp());
