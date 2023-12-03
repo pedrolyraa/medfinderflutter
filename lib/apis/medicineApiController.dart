@@ -1,6 +1,4 @@
-
 class Medicine {
-  // Adicione o campo id, se necessário
   final String name;
   final String description;
   final int quantity;
@@ -17,6 +15,17 @@ class Medicine {
     required this.type,
   });
 
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'description': description,
+      'quantityML': quantity, // ou 'quantity', dependendo do que a API espera
+      'dailyUse': dailyUse,
+      'totalQuantity': totalQuantity,
+      'type': type,
+    };
+  }
+
   factory Medicine.fromJson(Map<String, dynamic> json) {
     return Medicine(
       name: json['name'],
@@ -27,4 +36,6 @@ class Medicine {
       type: json['type'],
     );
   }
+
+
 }

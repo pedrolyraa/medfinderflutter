@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 
+import 'RequestPatient.dart';
 import 'medicineApiController.dart';
 
 class ApiService {
@@ -84,6 +86,10 @@ class ApiService {
     }
   }
 
+
+
+
+
   Future<bool> registerMedication(Medicine data, String token) async {
     try {
       final response = await http.post(
@@ -109,6 +115,109 @@ class ApiService {
       return false;
     }
   }
+
+
+
+
+  Future<bool> registerPatient(String token, RequestPatient data) async {
+    try {
+      final response = await http.post(
+        Uri.parse('http://10.0.2.2:8080/patient/register'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: jsonEncode({
+          'name': data.name,
+          'phoneNumber': data.phoneNumber,
+          'parentPhoneNumber': data.parentPhoneNumber,
+          'documents': data.documents,
+          'medication': data.medication.map((medication) => {
+            'name': medication.name,
+            'description': medication.description,
+            'quantityML': medication.quantity,
+            'dailyUse': medication.dailyUse,
+            'totalQuantity': medication.totalQuantity,
+            'type': medication.type,
+          }).toList(),
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        // Log error details, and consider checking the response body for more information
+        print('Erro durante a solicitação de registro de paciente. Status Code: ${response.statusCode}, Response Body: ${response.body}');
+        return false;
+      }
+    } catch (e) {
+      // Log or report the error
+      print('Erro durante a solicitação de registro de paciente: $e');
+      return false;
+    }
+  }
+
+
+  Future<List<Medicine>?> getPatientMedications(String cpf, String token) async {
+    try {
+      final Uri url = Uri.parse('http://10.0.2.2:8080/patient/medications');
+
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: jsonEncode({'documents': cpf}),
+      );
+
+      if (response.statusCode == 200) {
+        final List<dynamic> medicationsJson = json.decode(response.body);
+        final List<Medicine> medications = medicationsJson
+            .map((medicationJson) => Medicine.fromJson(medicationJson as Map<String, dynamic>))
+            .toList();
+
+        return medications;
+      } else {
+        print('Código de status diferente de 200: ${response.statusCode}');
+        return null;
+      }
+    } catch (e) {
+      print('Erro na requisição: $e');
+      return null;
+    }
+  }
+
+
+  Future<double?> calculateRemainingDays(double dailyUse, double totalQuantity) async {
+    try {
+      final Uri url = Uri.parse('http://10.0.2.2:8080/medicine/remaining');
+
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          'dailyUse': dailyUse,
+          'totalQuantity': totalQuantity,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        final double remainingDays = json.decode(response.body) as double;
+        return remainingDays;
+      } else {
+        print('Código de status diferente de 200: ${response.statusCode}');
+        return null;
+      }
+    } catch (e) {
+      print('Erro na requisição: $e');
+      return null;
+    }
+  }
+
+
 
 
 
