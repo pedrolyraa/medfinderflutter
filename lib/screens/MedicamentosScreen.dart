@@ -10,8 +10,8 @@ class MedicamentosScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Container(
-            height: 30, // Altura da barra superior (30 pixels)
-            color: Colors.teal[800], // Cor da barra superior
+            height: 30,
+            color: Colors.teal[800],
           ),
           Container(
             color: Colors.teal[800],
@@ -52,7 +52,7 @@ class MedicamentosScreen extends StatelessWidget {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.teal[900], // Cor de fundo
+                        backgroundColor: Colors.teal[900],
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
@@ -67,23 +67,32 @@ class MedicamentosScreen extends StatelessWidget {
                     SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
-                        // Alteração aqui: navegar para a tela de escolha de horário
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => EscolherHorarioScreen()),
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.teal[900], // Cor de fundo
+                        backgroundColor: Colors.teal[900],
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
-                      child: Text(
-                        'Escolher Horário',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Meus Medicamentos',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            'Escolher Horário',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     SizedBox(height: 20),
@@ -95,7 +104,7 @@ class MedicamentosScreen extends StatelessWidget {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.teal[900], // Cor de fundo
+                        backgroundColor: Colors.teal[900],
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
@@ -113,8 +122,8 @@ class MedicamentosScreen extends StatelessWidget {
             ),
           ),
           Container(
-            height: 50, // Altura da barra inferior
-            color: Colors.teal[800], // Cor da barra inferior
+            height: 50,
+            color: Colors.teal[800],
             alignment: Alignment.center,
             child: Text(
               'Olá, bem-vindo ao MedFinder',
