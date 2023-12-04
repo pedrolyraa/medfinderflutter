@@ -193,19 +193,19 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             ),
             SizedBox(height: 20),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                  return MenuScreen();
-                }));
-              },
-              child: Text(
-                'Ir para o Menu',
-                style: TextStyle(
-                  color: Colors.teal[900],
-                ),
-              ),
-            ),
+            // TextButton(
+            //   onPressed: () {
+            //     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            //       return MenuScreen();
+            //     }));
+            //   },
+            //   child: Text(
+            //     'Ir para o Menu',
+            //     style: TextStyle(
+            //       color: Colors.teal[900],
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

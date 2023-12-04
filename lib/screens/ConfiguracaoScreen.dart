@@ -42,6 +42,7 @@ class _ConfiguracaoScreenState extends State<ConfiguracaoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.teal[900],
         title: Text('Cadastro de Paciente'),
       ),
       body: SingleChildScrollView(
@@ -134,11 +135,29 @@ class _ConfiguracaoScreenState extends State<ConfiguracaoScreen> {
 
               ElevatedButton(
                 onPressed: _adicionarMedicamento,
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.teal[900]),
+                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ),
                 child: Text('Adicionar Medicamento'),
               ),
 
               ElevatedButton(
                 onPressed: _cadastrarPaciente,
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.teal[900]),
+                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ),
                 child: Text('Cadastrar Paciente'),
               ),
             ],

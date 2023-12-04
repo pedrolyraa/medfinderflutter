@@ -11,11 +11,11 @@ class MedicamentosScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Container(
-            height: 30, // Altura da barra superior (30 pixels)
-            color: Colors.teal[800], // Cor da barra superior
+            height: 40, // Altura da barra superior (30 pixels)
+            color: Colors.teal[900], // Cor da barra superior
           ),
           Container(
-            color: Colors.teal[800],
+            color: Colors.teal[900],
             alignment: Alignment.center,
             child: Column(
               children: <Widget>[
@@ -30,9 +30,10 @@ class MedicamentosScreen extends StatelessWidget {
               ],
             ),
           ),
+
           Expanded(
             child: Container(
-              color: Colors.teal[100],
+              color: Colors.white,
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

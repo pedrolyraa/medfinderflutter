@@ -29,24 +29,25 @@ class _MeusMedicamentosScreenState extends State<MeusMedicamentosScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Meus Medicamentos'),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
+      body: Container(
+        color: Colors.teal[900],
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // Campo de CPF
+            children: <Widget>[
+              SizedBox(height: 20),
+              Image.asset('assets/images/splash.png', width: 100, height: 100),
               Text(
-                'CPF:',
+                'Digite as informações do medicamento que deseja cadastrar',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
+                textAlign: TextAlign.center,
               ),
-              SizedBox(height: 8),
+              SizedBox(height: 20),
               // Campo de entrada de texto para CPF
               TextField(
                 controller: cpfController,
@@ -54,12 +55,18 @@ class _MeusMedicamentosScreenState extends State<MeusMedicamentosScreen> {
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   hintText: 'Insira seu CPF',
+                  filled: true,
+                  fillColor: Colors.white,
                 ),
               ),
+              SizedBox(height: 20),
+
               TextField(
                 controller: _tokenController,
                 decoration: InputDecoration(
                   labelText: 'Token',
+                  filled: true,
+                  fillColor: Colors.white,
                 ),
               ),
               SizedBox(height: 30),
@@ -112,6 +119,15 @@ class _MeusMedicamentosScreenState extends State<MeusMedicamentosScreen> {
                     print('Token não obtido');
                   }
                 },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.teal[900]),
+                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ),
                 child: Text('Buscar Medicamentos'),
               ),
               SizedBox(height: 30),
@@ -121,6 +137,7 @@ class _MeusMedicamentosScreenState extends State<MeusMedicamentosScreen> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
+
                 ),
               ),
               SizedBox(height: 8),
@@ -133,8 +150,12 @@ class _MeusMedicamentosScreenState extends State<MeusMedicamentosScreen> {
                 decoration: InputDecoration(
                   labelText: 'Quantidade',
                   hintText: 'Insira a quantidade',
+                  filled: true,
+                  fillColor: Colors.white,
                 ),
               ),
+
+              SizedBox(height: 20),
               TextField(
                 controller: totalQuantityController,
                 keyboardType: TextInputType.number,
@@ -142,6 +163,8 @@ class _MeusMedicamentosScreenState extends State<MeusMedicamentosScreen> {
                 decoration: InputDecoration(
                   labelText: 'Quantidade Total',
                   hintText: 'Insira a quantidade total',
+                  filled: true,
+                  fillColor: Colors.white,
                 ),
               ),
 
@@ -161,17 +184,26 @@ class _MeusMedicamentosScreenState extends State<MeusMedicamentosScreen> {
                     remainingDaysResult = remainingDays; // Atualizar a variável do estado
                   });
                 },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.teal[900]),
+                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ),
                 child: Text('Calcular Dias Restantes'),
               ),
 
-              SizedBox(height: 16),
+              SizedBox(height: 125),
 
               // Exibir o resultado
               if (remainingDaysResult != null)
                 Text(
                   'Dias restantes do medicamento: $remainingDaysResult dias',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

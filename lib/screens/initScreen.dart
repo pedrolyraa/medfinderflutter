@@ -70,7 +70,7 @@ class _InitScreenState extends State<InitScreen> {
                   Container(
                     height: displayHeight() / 4,
                     decoration: BoxDecoration(
-                      color: Colors.teal[700],
+                      color: Colors.teal[900],
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(60),
                         bottomRight: Radius.circular(60),
@@ -79,23 +79,24 @@ class _InitScreenState extends State<InitScreen> {
                     child: Column(
                       children: <Widget>[
                         Container(
-                          width: 160, // Largura da imagem
-                          height: 160, // Altura da imagem
+                          width: 300, // Largura da imagem
+                          height: 100, // Altura da imagem
                           child: Image.asset(
                             'assets/images/splash.png', // Caminho para a imagem
-                            fit: BoxFit.cover, // Ajuste da imagem
+                            fit: BoxFit.scaleDown, // Ajuste da imagem
                           ),
                         ),
                         Text(
                           'Faça um pequeno cadastro!',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: 20,
                           ),
                         ),
                       ],
                     ),
                   ),
+                  SizedBox(height: 40.0),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
