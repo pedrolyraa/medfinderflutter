@@ -8,14 +8,9 @@ import 'MedicamentosScreen.dart'; // Importe a classe ApiService para ter acesso
 import 'package:flutter/services.dart'; // Importe o pacote services.dart para acessar a área de transferência
 
 void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => AuthController(),
-      child: MaterialApp(
-        home: MenuScreen(),
-      ),
-    ),
-  );
+  runApp(MaterialApp(
+    home: MenuScreen(),
+  ));
 }
 
 class MenuScreen extends StatefulWidget {
