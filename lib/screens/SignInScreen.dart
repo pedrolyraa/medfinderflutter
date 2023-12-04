@@ -93,8 +93,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   width: 100,
                   height: 100,
                   child: Image.asset(
-                    'assets/images/splashGreen.png', // Caminho para a imagem
-                    fit: BoxFit.cover, // Ajuste da imagem
+                    'assets/images/splash.png', // Caminho para a imagem
+                    fit: BoxFit.scaleDown, // Ajuste da imagem
                   ),
                 ),
                 Text(

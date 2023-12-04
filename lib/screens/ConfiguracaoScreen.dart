@@ -180,7 +180,7 @@ class _ConfiguracaoScreenState extends State<ConfiguracaoScreen> {
       String telefoneResponsavel = _parentPhoneNumberController.text;
       String documentos = _documentsController.text;
 
-      String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6IjExMS4xMTEuMTExLTExIiwiZXhwIjoxNzAxNjQwMzI0fQ.C30Md9OeL896yX1xHOYgabbZLzrQDuznXWMntay5y8k";
+      String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6IjExMS4xMTEuMTExLTExIiwiZXhwIjoxNzAxNjY4NDUyfQ.5LHaPWz2wLW3BbwQNtv0Rt44McQ7iVFGOw41U9TaawI";
 
       List<Medicine> medications =
       _medications.map((medicationWidget) => medicationWidget.getMedication()).toList();
