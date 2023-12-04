@@ -16,27 +16,33 @@ class _AceiteScreenState extends State<AceiteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Tomar Medicamento'),
-        backgroundColor: Colors.teal[900],
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            Container(
+              width: 100,
+              height: 100,
+              child: Image.asset(
+                'assets/images/splashGreen.png', // Caminho para a imagem
+                fit: BoxFit.cover, // Ajuste da imagem
+              ),
+            ),
+            SizedBox(height: 10),
             Text(
               'Você tomou seu medicamento?',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
+              textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 _pararTimer();
                 _realizarAceite();
-                _enviarSolicitacao();
                 _navegarParaMenu();
               },
               style: ElevatedButton.styleFrom(
@@ -44,11 +50,25 @@ class _AceiteScreenState extends State<AceiteScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
               ),
               child: Text(
                 'Aceite',
                 style: TextStyle(
+                  fontSize: 18,
                   color: Colors.white,
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                'Confirme acima apenas se tomou o seu medicamento. Caso não clique, em 30 minutos enviaremos um SMS para o número do seu responsável.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black,
                 ),
               ),
             ),
@@ -62,19 +82,6 @@ class _AceiteScreenState extends State<AceiteScreen> {
     setState(() {
       _aceiteRealizado = true;
     });
-  }
-
-  void _enviarSolicitacao() async {
-    final url = Uri.parse('http://localhost:3030/send');
-
-    final response = await http.post(
-      url,
-      headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({'message': 'Medicamento Tomado', 'number': 'seu-numero'}),
-    );
-
-    // Não é necessário mais retornar para a tela do menu aqui
-    // Navigator.pop(context);
   }
 
   void _pararTimer() {
@@ -105,5 +112,18 @@ class _AceiteScreenState extends State<AceiteScreen> {
   void dispose() {
     _pararTimer();
     super.dispose();
+  }
+
+  void _enviarSolicitacao() async {
+    final url = Uri.parse('http://localhost:3030/send');
+
+    final response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({'message': 'Medicamento Tomado', 'number': 'seu-numero'}),
+    );
+
+    // Não é necessário mais retornar para a tela do menu aqui
+    // Navigator.pop(context);
   }
 }
