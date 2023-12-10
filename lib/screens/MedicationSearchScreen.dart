@@ -61,27 +61,31 @@ class _MedicationSearchScreenState extends State<MedicationSearchScreen> {
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 24,
+                          fontWeight: FontWeight.bold
                         ),
                       ),
                     ],
                   ),
                 ),
 
-                SizedBox(height: 20),
+                SizedBox(height: 30),
                 // Separate column for the center elements
                 Column(
                   children: [
                     TextField(
                       controller: _searchController,
-                      decoration: InputDecoration(
-                        labelText: 'Nome do Medicamento',
+                      decoration: InputDecoration(border: InputBorder.none,
+                        hintText: 'Nome do Medicamento',
+                        icon: Icon(Icons.medication)
+
                       ),
                     ),
                     SizedBox(height: 20),
                     TextField(
                       controller: _tokenController,
-                      decoration: InputDecoration(
-                        labelText: 'Token',
+                      decoration: InputDecoration(border: InputBorder.none,
+                        hintText: 'Token',
+                        icon: Icon(Icons.key)
                       ),
                     ),
                     SizedBox(height: 20),
@@ -90,7 +94,8 @@ class _MedicationSearchScreenState extends State<MedicationSearchScreen> {
                         _searchMedication();
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.teal[900], // Defina a cor desejada aqui
+                        primary: Colors.teal[900],
+                        foregroundColor: Colors.white// Defina a cor desejada aqui
                       ),
                       child: Text('Buscar Medicamento'),
                     ),
@@ -101,27 +106,27 @@ class _MedicationSearchScreenState extends State<MedicationSearchScreen> {
                   children: [
                     Text(
                       'Medicine Name: ${selectedMedicamento?.name ?? ''}',
-                      style: TextStyle(fontSize: 18), // Defina o tamanho da fonte desejado
+                      style: TextStyle(fontSize: 20 ,fontWeight: FontWeight.bold), // Defina o tamanho da fonte desejado
                     ),
                     SizedBox(height: 20),
                     Text(
                       'Description: ${selectedMedicamento?.description ?? ''}',
-                      style: TextStyle(fontSize: 18), // Defina o tamanho da fonte desejado
+                      style: TextStyle(fontSize: 20 ,fontWeight: FontWeight.bold), // Defina o tamanho da fonte desejado
                     ),
                     SizedBox(height: 20),
                     Text(
                       'Quantidade Diaria: ${selectedMedicamento?.dailyUse ?? ''}',
-                      style: TextStyle(fontSize: 18), // Defina o tamanho da fonte desejado
+                      style: TextStyle(fontSize: 20 ,fontWeight: FontWeight.bold), // Defina o tamanho da fonte desejado
                     ),
                     SizedBox(height: 20),
                     Text(
                       'Quantidade em ML: ${selectedMedicamento?.quantity ?? ''}',
-                      style: TextStyle(fontSize: 18), // Defina o tamanho da fonte desejado
+                      style: TextStyle(fontSize: 20 ,fontWeight: FontWeight.bold), // Defina o tamanho da fonte desejado
                     ),
                     SizedBox(height: 20),
                     Text(
                       'Tipo De remedio: ${selectedMedicamento?.type ?? ''}',
-                      style: TextStyle(fontSize: 18), // Defina o tamanho da fonte desejado
+                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold ), // Defina o tamanho da fonte desejado
                     ),
                   ],
                 ),

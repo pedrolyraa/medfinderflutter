@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'MedFinder',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.teal,
         ),
         home: AuthWrapper(pageController),
       ),
@@ -93,7 +93,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   width: 100,
                   height: 100,
                   child: Image.asset(
-                    'assets/images/splash.png', // Caminho para a imagem
+                    'assets/images/icon.png', // Caminho para a imagem
                     fit: BoxFit.scaleDown, // Ajuste da imagem
                   ),
                 ),

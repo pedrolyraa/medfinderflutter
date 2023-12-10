@@ -25,7 +25,7 @@ class _AceiteScreenState extends State<AceiteScreen> {
               width: 100,
               height: 100,
               child: Image.asset(
-                'assets/images/splashGreen.png', // Caminho para a imagem
+                'assets/images/icon.png', // Caminho para a imagem
                 fit: BoxFit.cover, // Ajuste da imagem
               ),
             ),

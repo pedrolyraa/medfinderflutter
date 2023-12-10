@@ -30,14 +30,14 @@ class _MeusMedicamentosScreenState extends State<MeusMedicamentosScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.teal[900],
+        color: Colors.white,
         child: SingleChildScrollView(
           padding: EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               SizedBox(height: 20),
-              Image.asset('assets/images/splash.png', width: 100, height: 100),
+              Image.asset('assets/images/icon.png', width: 180, height: 180),
               Text(
                 'Digite as informações do medicamento que deseja cadastrar',
                 style: TextStyle(
@@ -54,19 +54,38 @@ class _MeusMedicamentosScreenState extends State<MeusMedicamentosScreen> {
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly, cpfFormatter],
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  hintText: 'Insira seu CPF',
+                  labelText: 'Insira seu CPF',
+                  labelStyle: TextStyle(
+                    color: Colors.white,
+                  ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: Colors.teal[900],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  // Defina a cor do texto de dica (quando o campo está vazio) aqui
+                  // No exemplo abaixo, a dica será branca
+                  hintStyle: TextStyle(color: Colors.white),
                 ),
               ),
               SizedBox(height: 20),
 
               TextField(
                 controller: _tokenController,
+                style: TextStyle(color: Colors.white), // Esta linha define a cor do texto
                 decoration: InputDecoration(
                   labelText: 'Token',
+                  labelStyle: TextStyle(
+                    color: Colors.white,
+                  ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: Colors.teal[900],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  // Defina a cor do texto de dica (quando o campo está vazio) aqui
+                  // No exemplo abaixo, a dica será branca
+                  hintStyle: TextStyle(color: Colors.white),
                 ),
               ),
               SizedBox(height: 30),
@@ -148,10 +167,18 @@ class _MeusMedicamentosScreenState extends State<MeusMedicamentosScreen> {
                 keyboardType: TextInputType.number,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 decoration: InputDecoration(
-                  labelText: 'Quantidade',
-                  hintText: 'Insira a quantidade',
+                  labelText: 'Uso diário',
+                  labelStyle: TextStyle(
+                    color: Colors.white,
+                  ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: Colors.teal[900],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  // Defina a cor do texto de dica (quando o campo está vazio) aqui
+                  // No exemplo abaixo, a dica será branca
+                  hintStyle: TextStyle(color: Colors.white),
                 ),
               ),
 
@@ -161,10 +188,18 @@ class _MeusMedicamentosScreenState extends State<MeusMedicamentosScreen> {
                 keyboardType: TextInputType.number,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 decoration: InputDecoration(
-                  labelText: 'Quantidade Total',
-                  hintText: 'Insira a quantidade total',
+                  labelText: 'Quantidade Total de Unidades',
+                  labelStyle: TextStyle(
+                    color: Colors.white,
+                  ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: Colors.teal[900],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  // Defina a cor do texto de dica (quando o campo está vazio) aqui
+                  // No exemplo abaixo, a dica será branca
+                  hintStyle: TextStyle(color: Colors.white),
                 ),
               ),
 
@@ -196,7 +231,7 @@ class _MeusMedicamentosScreenState extends State<MeusMedicamentosScreen> {
                 child: Text('Calcular Dias Restantes'),
               ),
 
-              SizedBox(height: 125),
+              SizedBox(height: 80),
 
               // Exibir o resultado
               if (remainingDaysResult != null)

@@ -74,6 +74,7 @@ class _MenuScreenState extends State<MenuScreen> {
         },
         backgroundColor: Colors.teal[900],
         child: Icon(Icons.vpn_key),
+          foregroundColor: Colors.white
 
       ),
     );

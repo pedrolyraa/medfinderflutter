@@ -43,7 +43,7 @@ class _CadastroMedicamentoState extends State<CadastroMedicamento> {
 
       final response = await ApiService().registerMedication(
         requestData,
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6IjExMS4xMTEuMTExLTExIiwiZXhwIjoxNzAxNjY4NDUyfQ.5LHaPWz2wLW3BbwQNtv0Rt44McQ7iVFGOw41U9TaawI",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6IjExMS4xMTEuMTExLTExIiwiZXhwIjoxNzAxODcwMzk0fQ.8YOo292qkQz19Snm4uJJGbNY4SHxHU64hf8vjAYZH0o",
       );
 
       if (response) {
